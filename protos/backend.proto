@@ -8,15 +8,16 @@ import "google/protobuf/timestamp.proto";
 Common prefix naming convention:
 - Find: return one item by id
 - Get: return multiple items by id and support pagination
-- Search: return multiple items by combined conditions
+- Search: return multiple items by combined non-id conditions
 - Create: create new item and return
 */
 
 service User {
-  rpc SignIn (SignInRequest) returns (AuthPayload) {}
-  rpc SignUp (SignUpRequest) returns (AuthPayload) {}
+  rpc SignIn (SignInRequest) returns (AuthenticatedInfo) {}
+  rpc SignUp (SignUpRequest) returns (AuthenticatedInfo) {}
   rpc FindUser (FindUserRequest) returns (UserInfo) {}
-  rpc SearchUser (SearchUserRequest) returns (SearchUserResponse) {}
+  rpc GetUsers (GetUsersRequest) returns (UsersInfo) {}
+  rpc SearchUser (SearchUserRequest) returns (UsersInfo) {}
 }
 
 service Chat {
@@ -39,7 +40,7 @@ message UserInfo {
   required string displayName = 4;
 }
 
-message AuthPayload {
+message AuthenticatedInfo {
   required UserInfo userInfo = 1;
   required Token token = 2;
 }
@@ -56,18 +57,21 @@ message SignUpRequest {
   required string avatarURL = 4;
 }
 
+message GetUsersRequest {
+  repeated string userIds = 1;
+}
+
 message FindUserRequest {
   required string userId = 1;
 }
 
 message SearchUserRequest {
   required string term = 1;
-  repeated string userIds = 2;
-  optional int32 pageNumber = 3;
-  optional int32 pageSize = 4;
+  optional int32 pageNumber = 2;
+  optional int32 pageSize = 3;
 }
 
-message SearchUserResponse {
+message UsersInfo {
   repeated UserInfo users = 1;
 }
 
