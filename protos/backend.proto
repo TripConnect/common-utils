@@ -20,6 +20,11 @@ service User {
   rpc SearchUser (SearchUserRequest) returns (UsersInfo) {}
 }
 
+service TwoFA {
+  rpc CreateSetting (Create2FARequest) returns (Create2FAResponse) {}
+  rpc ValidateResource (Validate2FARequest) returns (Validate2FAResponse) {}
+}
+
 service Chat {
   rpc CreateConversation (CreateConversationRequest) returns (Conversation) {}
   rpc CreateChatMessage (CreateChatMessageRequest) returns (ChatMessage) {}
@@ -137,4 +142,24 @@ message GetChatMessageRequest {
 
 message GetChatMessagesPaginationResponse {
   repeated ChatMessage messages = 1;
+}
+
+message Create2FARequest {
+  required string resourceId = 1;
+  required string label = 2;
+}
+
+message Create2FAResponse {
+  required string secret = 1;
+  required string qrCode = 2;
+}
+
+message Validate2FARequest {
+  required string resourceId = 1;
+  required string otp = 2;
+}
+
+message Validate2FAResponse {
+  required bool success = 1;
+  required string status = 2;
 }
