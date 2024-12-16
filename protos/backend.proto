@@ -42,8 +42,8 @@ message Token {
 message UserInfo {
   required string id = 1;
   required string avatar = 2;
-  required string username = 3;
   required string displayName = 4;
+  required bool enabled2fa = 5;
 }
 
 message AuthenticatedInfo {
