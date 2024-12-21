@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package backend.twofa;
+package backend.twofa_service;
 
 service TwoFA {
     rpc GenerateSetting (Generate2FARequest) returns (Generate2FAResponse) {}

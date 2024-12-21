@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package backend.user;
+package backend.user_service;
 
 service User {
     rpc SignIn (SignInRequest) returns (AuthenticatedInfo) {}
