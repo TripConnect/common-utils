@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package backend.user;
+
+service User {
+    rpc SignIn (SignInRequest) returns (AuthenticatedInfo) {}
+    rpc SignUp (SignUpRequest) returns (AuthenticatedInfo) {}
+    rpc FindUser (FindUserRequest) returns (UserInfo) {}
+    rpc GetUsers (GetUsersRequest) returns (UsersInfo) {}
+    rpc SearchUser (SearchUserRequest) returns (UsersInfo) {}
+}
+
+message Token {
+    required string access_token = 1;
+    required string refresh_token = 2;
+}
+
+message UserInfo {
+    required string id = 1;
+    required string avatar = 2;
+    required string display_name = 4;
+    required bool enabled_2fa = 5;
+}
+
+message AuthenticatedInfo {
+    required UserInfo user_info = 1;
+    required Token token = 2;
+}
+
+message SignInRequest {
+    required string username = 1;
+    required string password = 2;
+}
+
+message SignUpRequest {
+    required string username = 1;
+    required string password = 2;
+    required string display_name = 3;
+    required string avatar_url = 4;
+}
+
+message GetUsersRequest {
+    repeated string user_ids = 1;
+}
+
+message FindUserRequest {
+    required string user_id = 1;
+}
+
+message SearchUserRequest {
+    required string term = 1;
+    optional int32 page_number = 2;
+    optional int32 page_size = 3;
+}
+
+message UsersInfo {
+    repeated UserInfo users = 1;
+}

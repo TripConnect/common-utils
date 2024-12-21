@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package backend.chat_service;
+
+import "google/protobuf/timestamp.proto";
+
+service Chat {
+    rpc CreateConversation (CreateConversationRequest) returns (Conversation) {}
+    rpc CreateChatMessage (CreateChatMessageRequest) returns (ChatMessage) {}
+    rpc SearchConversations (SearchConversationsRequest) returns (SearchConversationsPaginationResponse) {}
+    rpc FindConversation (FindConversationRequest) returns (Conversation) {}
+    rpc GetChatMessage (GetChatMessageRequest) returns (GetChatMessagesPaginationResponse) {}
+}
+
+message ChatMessage {
+    required string id = 1;
+    required string conversationId = 2;
+    required string fromUserId = 3;
+    required string messageContent = 4;
+    required google.protobuf.Timestamp createdAt = 5;
+}
+
+enum ConversationType {
+    PRIVATE = 1;
+    GROUP = 2;
+}
+
+message FindConversationRequest {
+    required string conversationId = 1;
+    required int32 messagePage = 2;
+    required int32 messageLimit = 3;
+}
+
+message CreateConversationRequest {
+    optional string ownerId = 1;
+    optional string name = 2;
+    required ConversationType type = 3;
+    repeated string memberIds = 4;
+}
+
+message CreateChatMessageRequest {
+    required string conversationId = 1;
+    required string fromUserId = 2;
+    required string messageContent = 3;
+}
+
+message Conversation {
+    required string id = 1;
+    required ConversationType type = 2;
+    required string name = 3;
+    repeated string memberIds = 4;
+    repeated ChatMessage messages = 5;
+    required google.protobuf.Timestamp createdAt = 6;
+}
+
+message SearchConversationsRequest {
+    optional ConversationType type = 1;
+    repeated string memberIds = 2;
+    optional string term = 3;
+    optional int32 page = 4;
+    optional int32 limit = 5;
+    required int32 messageLimit = 6;
+}
+
+message SearchConversationsPaginationResponse {
+    repeated Conversation conversations = 1;
+}
+
+message GetChatMessageRequest {
+    required string conversationId = 1;
+    optional int32 page = 2;
+    optional int32 limit = 3;
+}
+
+message GetChatMessagesPaginationResponse {
+    repeated ChatMessage messages = 1;
+}
