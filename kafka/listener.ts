@@ -1,6 +1,6 @@
 import { ConsumerEachMessagePayload, Kafka } from "kafkajs";
 
-type TopicResolver = {
+export type TopicResolver = {
     groupId: string,
     topic: string,
     resolver: (message: Record<string, string>) => Promise<void>,

@@ -1,6 +1,6 @@
 import kafkajs, { Kafka, Producer } from "kafkajs";
 
-type PublishPayload = {
+export type PublishPayload = {
     topic: string,
     message: string,
 }
