@@ -5,13 +5,15 @@
   "description": "The system library package",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^22.10.2"
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
     "kafkajs": "^2.2.4"

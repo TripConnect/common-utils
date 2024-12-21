@@ -1,4 +1,4 @@
-import kafkajs, { Kafka, Producer } from "kafkajs";
+import { Kafka, Producer, Partitioners } from "kafkajs";
 
 export type PublishPayload = {
     topic: string,
@@ -11,7 +11,7 @@ export default class KafkaProducer {
     constructor(private kafka: Kafka) { }
 
     private async initialize(): Promise<void> {
-        const producer = this.kafka.producer({ createPartitioner: kafkajs.Partitioners.LegacyPartitioner });
+        const producer = this.kafka.producer({ createPartitioner: Partitioners.LegacyPartitioner });
         await producer.connect();
         KafkaProducer.producer = producer;
     }
