@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "./lib", // Output directory for compiled JavaScript
+        "rootDir": "./src", // Root directory for TypeScript files
+        "module": "commonjs", // Module format
+        "target": "ES2017", // JavaScript version
+        "strict": true, // Enable strict type-checking
+        "esModuleInterop": true, // Enable ES module interop
+        "resolveJsonModule": true, // Allow importing JSON files
+        "skipLibCheck": true // Skip type checking of declaration files
+    },
+    "include": [
+        "src"
+    ], // Include all TypeScript files in `src`
+    "exclude": [
+        "node_modules",
+        "lib"
+    ] // Exclude `node_modules` and `lib`
+}
