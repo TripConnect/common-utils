@@ -1,19 +1,20 @@
 {
     "compilerOptions": {
-        "outDir": "./lib", // Output directory for compiled JavaScript
-        "rootDir": "./src", // Root directory for TypeScript files
-        "module": "commonjs", // Module format
-        "target": "ES2017", // JavaScript version
-        "strict": true, // Enable strict type-checking
-        "esModuleInterop": true, // Enable ES module interop
-        "resolveJsonModule": true, // Allow importing JSON files
-        "skipLibCheck": true // Skip type checking of declaration files
+        "declaration": true, // Generates .d.ts files
+        "declarationMap": true, // Optional: Generates .d.ts.map for better debugging
+        "emitDeclarationOnly": false, // Ensures both .js and .d.ts are emitted
+        "outDir": "./lib", // Output folder for compiled files
+        "moduleResolution": "node", // Ensures compatibility with Node.js modules
+        "module": "CommonJS", // Adjust based on your project needs
+        "target": "ES6", // Adjust based on your target
+        "strict": true // Optional: Enables strict type checking
     },
     "include": [
-        "src"
-    ], // Include all TypeScript files in `src`
+        "src/**/*"
+    ], // Specify source files to include
     "exclude": [
         "node_modules",
+        "dist",
         "lib"
-    ] // Exclude `node_modules` and `lib`
+    ] // Exclude unnecessary files
 }
