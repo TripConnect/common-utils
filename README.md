@@ -1,5 +1,5 @@
 # Introduction
-The system library package  
+The system utils package  
 
 **Naming conventions**  
 - Find: return one item by id
@@ -8,7 +8,13 @@ The system library package
 - Create: create new item and returns  
 
 **Style guide**  
-Following official documentation https://protobuf.dev/programming-guides/style/
+Following the official [documentation](https://protobuf.dev/programming-guides/style/)
+
+# Release
+```sh
+npm run build # Build the package resources
+git push # Release to github as registry
+```
 
 # Installation
 ```sh
