@@ -57,8 +57,8 @@ message SearchConversationsRequest {
     repeated string member_ids = 2;
     optional string term = 3;
     optional int32 page_number = 4;
-    optional int32 page_limit = 5;
-    required int32 message_page_limit = 6;
+    optional int32 page_size = 5;
+    required int32 message_page_size = 6;
 }
 
 message SearchConversationsPaginationResponse {
