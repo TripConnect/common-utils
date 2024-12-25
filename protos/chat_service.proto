@@ -9,7 +9,6 @@ service ChatService {
     rpc CreateChatMessage (CreateChatMessageRequest) returns (ChatMessage) {}
     rpc SearchConversations (SearchConversationsRequest) returns (SearchConversationsPaginationResponse) {}
     rpc FindConversation (FindConversationRequest) returns (Conversation) {}
-    rpc GetChatMessage (GetChatMessageRequest) returns (GetChatMessagesPaginationResponse) {}
 }
 
 message ChatMessage {
@@ -55,23 +54,13 @@ message Conversation {
 
 message SearchConversationsRequest {
     optional ConversationType type = 1;
-    repeated string memberIds = 2;
+    repeated string member_ids = 2;
     optional string term = 3;
-    optional int32 page = 4;
-    optional int32 limit = 5;
-    required int32 message_limit = 6;
+    optional int32 page_number = 4;
+    optional int32 page_limit = 5;
+    required int32 message_page_limit = 6;
 }
 
 message SearchConversationsPaginationResponse {
     repeated Conversation conversations = 1;
-}
-
-message GetChatMessageRequest {
-    required string conversation_id = 1;
-    optional int32 page_number = 2;
-    optional int32 page_limit = 3;
-}
-
-message GetChatMessagesPaginationResponse {
-    repeated ChatMessage messages = 1;
 }
