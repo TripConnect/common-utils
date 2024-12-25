@@ -4,7 +4,7 @@ const protoLoader = require('@grpc/proto-loader');
 const packageDefinition = protoLoader.loadSync(
     require.resolve('../../protos/backend.proto'),
     {
-        keepCase: true,
+        keepCase: false, // auto convert to camelCase
         longs: String,
         enums: String,
         defaults: true,

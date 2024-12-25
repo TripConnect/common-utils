@@ -2,6 +2,6 @@ syntax = "proto3";
 
 package backend;
 
-import "./user-service.proto";
-import "./twofa-service.proto";
-import "./chat-service.proto";
+import "./user_service.proto";
+import "./twofa_service.proto";
+import "./chat_service.proto";
