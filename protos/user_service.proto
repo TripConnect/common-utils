@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package backend.user_service;
 
-service User {
+service UserService {
     rpc SignIn (SignInRequest) returns (AuthenticatedInfo) {}
     rpc SignUp (SignUpRequest) returns (AuthenticatedInfo) {}
     rpc FindUser (FindUserRequest) returns (UserInfo) {}
