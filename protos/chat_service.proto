@@ -4,7 +4,7 @@ package backend.chat_service;
 
 import "google/protobuf/timestamp.proto";
 
-service Chat {
+service ChatService {
     rpc CreateConversation (CreateConversationRequest) returns (Conversation) {}
     rpc CreateChatMessage (CreateChatMessageRequest) returns (ChatMessage) {}
     rpc SearchConversations (SearchConversationsRequest) returns (SearchConversationsPaginationResponse) {}
@@ -14,10 +14,10 @@ service Chat {
 
 message ChatMessage {
     required string id = 1;
-    required string conversationId = 2;
-    required string fromUserId = 3;
-    required string messageContent = 4;
-    required google.protobuf.Timestamp createdAt = 5;
+    required string conversation_id = 2;
+    required string from_user_id = 3;
+    required string message_content = 4;
+    required google.protobuf.Timestamp created_at = 5;
 }
 
 enum ConversationType {
@@ -26,31 +26,31 @@ enum ConversationType {
 }
 
 message FindConversationRequest {
-    required string conversationId = 1;
-    required int32 messagePage = 2;
-    required int32 messageLimit = 3;
+    required string conversation_id = 1;
+    required int32 message_page_number = 2;
+    required int32 message_page_size = 3;
 }
 
 message CreateConversationRequest {
-    optional string ownerId = 1;
+    optional string owner_id = 1;
     optional string name = 2;
     required ConversationType type = 3;
-    repeated string memberIds = 4;
+    repeated string member_ids = 4;
 }
 
 message CreateChatMessageRequest {
-    required string conversationId = 1;
-    required string fromUserId = 2;
-    required string messageContent = 3;
+    required string conversation_id = 1;
+    required string from_user_id = 2;
+    required string message_content = 3;
 }
 
 message Conversation {
     required string id = 1;
     required ConversationType type = 2;
     required string name = 3;
-    repeated string memberIds = 4;
+    repeated string member_ids = 4;
     repeated ChatMessage messages = 5;
-    required google.protobuf.Timestamp createdAt = 6;
+    required google.protobuf.Timestamp created_at = 6;
 }
 
 message SearchConversationsRequest {
@@ -59,7 +59,7 @@ message SearchConversationsRequest {
     optional string term = 3;
     optional int32 page = 4;
     optional int32 limit = 5;
-    required int32 messageLimit = 6;
+    required int32 message_limit = 6;
 }
 
 message SearchConversationsPaginationResponse {
@@ -67,9 +67,9 @@ message SearchConversationsPaginationResponse {
 }
 
 message GetChatMessageRequest {
-    required string conversationId = 1;
-    optional int32 page = 2;
-    optional int32 limit = 3;
+    required string conversation_id = 1;
+    optional int32 page_number = 2;
+    optional int32 page_limit = 3;
 }
 
 message GetChatMessagesPaginationResponse {
