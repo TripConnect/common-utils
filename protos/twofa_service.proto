@@ -2,38 +2,38 @@ syntax = "proto3";
 
 package backend.twofa_service;
 
-service TwoFA {
-    rpc GenerateSetting (Generate2FARequest) returns (Generate2FAResponse) {}
-    rpc CreateSetting (Create2FARequest) returns (Create2FAResponse) {}
-    rpc ValidateResource (Validate2FARequest) returns (Validate2FAResponse) {}
+service TwoFactorAuthenticationService {
+    rpc GenerateSetting (Generate2faRequest) returns (Generate2faResponse) {}
+    rpc CreateSetting (Create2faRequest) returns (Create2faResponse) {}
+    rpc ValidateResource (Validate2faRequest) returns (Validate2faResponse) {}
 }
   
-message Generate2FARequest {
+message Generate2faRequest {
     required string label = 1;
 }
 
-message Generate2FAResponse {
+message Generate2faResponse {
     required string secret = 1;
-    required string qrCode = 2;
+    required string qr_code = 2;
 }
 
-message Create2FARequest {
-    required string resourceId = 1;
+message Create2faRequest {
+    required string resource_id = 1;
     required string label = 2;
     required string secret = 3;
     required string otp = 4;
 }
 
-message Create2FAResponse {
-    required string resourceId = 1;
+message Create2faResponse {
+    required string resource_id = 1;
 }
 
-message Validate2FARequest {
-    required string resourceId = 1;
+message Validate2faRequest {
+    required string resource_id = 1;
     required string otp = 2;
 }
 
-message Validate2FAResponse {
+message Validate2faResponse {
     required bool success = 1;
     required string status = 2;
 }
