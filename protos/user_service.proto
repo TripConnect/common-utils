@@ -19,7 +19,7 @@ message UserInfo {
     required string id = 1;
     required string avatar = 2;
     required string display_name = 4;
-    required bool enabled_2fa = 5;
+    required bool enabled_twofa = 5;
 }
 
 message AuthenticatedInfo {
