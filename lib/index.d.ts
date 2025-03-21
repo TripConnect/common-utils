@@ -1,5 +1,6 @@
 import { backendProto } from './grpc/definition';
 import KafkaListener, { TopicResolver } from './kafka/listener';
 import KafkaProducer, { PublishPayload } from './kafka/producer';
-export { backendProto, KafkaListener, KafkaProducer, TopicResolver, PublishPayload, };
+import TokenHelper, { JwtBody } from './helpers/tokenHelper';
+export { backendProto, KafkaListener, KafkaProducer, TopicResolver, PublishPayload, TokenHelper, JwtBody, };
 //# sourceMappingURL=index.d.ts.map

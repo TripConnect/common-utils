@@ -13,10 +13,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "jsonwebtoken": "^9.0.2",
     "kafkajs": "^2.2.4"
   },
   "exports": {
