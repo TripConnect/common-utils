@@ -8,10 +8,14 @@ export default class ConfigHelper {
      * @returns The fully configuration object
      */
     public static async init(serviceName: string) {
-        let address = process.env.NODE_ENV === "development" ? "localhost" : "config-service:31070";
-        let confis = await fetch(`${address}/${serviceName}`)
-            .then(resp => resp.json());
-        ConfigHelper.configs = confis;
+        let address = process.env.NODE_ENV === "development" ? "localhost" : "config-service";
+        await fetch(`${address}:31070/${serviceName}`)
+            .then(resp => resp.json())
+            .then(json => {
+                ConfigHelper.configs = json.data;
+                console.info("Configurations is loaded");
+            })
+            .catch(error => console.error(error));
     }
 
     /**
