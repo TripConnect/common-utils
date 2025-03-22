@@ -13,7 +13,7 @@ export default class TokenHelper {
      * @param token The jwt token
      * @returns The jwt body from given valid token, otherwise null returned
      */
-    static verify(token: string): JwtBody | null {
+    public static verify(token: string): JwtBody | null {
         try {
             return jwt.verify(token, TokenHelper.SECRET) as JwtBody;
         } catch (ignored) {
@@ -27,7 +27,7 @@ export default class TokenHelper {
      * @param token The jwt token
      * @returns The jwt token
      */
-    static sign(user: JwtBody): string {
+    public static sign(user: JwtBody): string {
         let accessToken = jwt.sign(user, TokenHelper.SECRET);
         return accessToken;
     }
