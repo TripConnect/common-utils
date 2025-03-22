@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 export default class ConfigHelper {
 
     private static configs: Record<string, any>;
@@ -9,7 +11,7 @@ export default class ConfigHelper {
      */
     public static async init(serviceName: string) {
         let address = process.env.NODE_ENV === "development" ? "localhost" : "config-service";
-        await fetch(`${address}:31070/configs/${serviceName}`)
+        await fetch(`http://${address}:31070/configs/${serviceName}`)
             .then(resp => resp.json())
             .then(json => {
                 ConfigHelper.configs = json.data;
