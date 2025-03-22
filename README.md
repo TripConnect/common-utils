@@ -18,5 +18,5 @@ git push # Release to github as registry
 
 # Installation
 ```sh
-npm install git+ssh://git@github.com:TripConnect/common-utils.git
+npm install git+ssh://git@github.com:TripConnect/common-utils.git --force
 ```
