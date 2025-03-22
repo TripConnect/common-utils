@@ -1,3 +1,4 @@
+import 'dotenv/config';
 export default class ConfigHelper {
     private static configs;
     /**

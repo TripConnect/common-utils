@@ -1,3 +1,4 @@
+import 'dotenv/config';
 export type JwtBody = {
     userId: string;
 };
