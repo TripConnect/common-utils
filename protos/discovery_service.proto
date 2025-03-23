@@ -3,7 +3,7 @@ syntax = "proto3";
 package backend.discovery_service;
 
 service DiscoveryService {
-    rpc Discover(DiscoveryRequest) returns ServiceInstance {}
+    rpc Discover (DiscoveryRequest) returns (ServiceInstance) {}
 }
 
 message DiscoveryRequest {
