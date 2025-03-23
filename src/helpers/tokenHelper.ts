@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import * as jwt from 'jsonwebtoken';
 import ConfigHelper from './configHelper';
 
