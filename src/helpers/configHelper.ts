@@ -4,9 +4,9 @@ import request from "sync-request";
 
 export default class ConfigHelper {
 
-    private static configs: Record<string, any>;
+    private static _CONFIGS: Record<string, any>;
 
-    public static load(): any {
+    static {
         let configHost = process.env.NODE_ENV === "local" ? "localhost" : "config-service";
         let serviceName = process.env.SERVICE_NAME || "unknown";
         let configUrl = `http://${configHost}:31070/configs/${serviceName}`;
@@ -14,7 +14,7 @@ export default class ConfigHelper {
         if (resp.isError()) {
             throw new Error("Cannot load the configurations for " + serviceName);
         }
-        ConfigHelper.configs = JSON.parse(resp.getBody("utf-8")).data;
+        ConfigHelper._CONFIGS = JSON.parse(resp.getBody("utf-8")).data;
     }
 
     /**
@@ -25,11 +25,7 @@ export default class ConfigHelper {
      * ConfigHelper.read("server.port");
      */
     public static read(path: string): any {
-        if (!ConfigHelper.configs) {
-            throw new Error("ConfigHelper is not loaded already");
-        }
-
-        let configValue = path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper.configs);
+        let configValue = path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper._CONFIGS);
         if (!configValue) throw new Error("Config not found: " + path);
         return configValue;
     }
@@ -43,11 +39,7 @@ export default class ConfigHelper {
      * ConfigHelper.readWithDefault("server.port", 3107);
      */
     public static readWithDefault(path: string, defaultValue: any): any {
-        if (!ConfigHelper.configs) {
-            throw new Error("ConfigHelper is not loaded already");
-        }
-
-        let configValue = path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper.configs).data;
+        let configValue = path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper._CONFIGS).data;
         return configValue ?? defaultValue;
     }
 }
