@@ -1,7 +1,6 @@
 import "dotenv/config";
 export default class ConfigHelper {
-    private static configs;
-    static load(): any;
+    private static _CONFIGS;
     /**
      * Reading the service configuration by key
      * @param path The path to sprcific configuration key

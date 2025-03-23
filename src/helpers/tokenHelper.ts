@@ -7,10 +7,6 @@ export type JwtBody = {
 
 export default class TokenHelper {
 
-    static {
-        ConfigHelper.load();
-    }
-
     private static get SECRET(): string {
         return ConfigHelper.read("jwt-secret-key");
     }
