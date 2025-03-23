@@ -7,7 +7,7 @@ export default class ConfigHelper {
     private static configs: Record<string, any>;
 
     public static load(): any {
-        let configHost = process.env.NODE_ENV === "development" ? "localhost" : "config-service";
+        let configHost = process.env.NODE_ENV === "local" ? "localhost" : "config-service";
         let serviceName = process.env.SERVICE_NAME || "unknown";
         let configUrl = `http://${configHost}:31070/configs/${serviceName}`;
         let resp = request("GET", configUrl);
