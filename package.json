@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.2",
-    "kafkajs": "^2.2.4"
+    "kafkajs": "^2.2.4",
+    "sync-request": "^6.1.0"
   },
   "exports": {
     ".": {

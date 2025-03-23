@@ -1,24 +1,10 @@
-import 'dotenv/config';
+import "dotenv/config";
+
+import request from "sync-request";
 
 export default class ConfigHelper {
 
     private static configs: Record<string, any>;
-
-    /**
-     * Initial configuration data
-     * @param serviceName The current service name
-     * @returns The fully configuration object
-     */
-    public static async init(serviceName: string) {
-        let address = process.env.NODE_ENV === "development" ? "localhost" : "config-service";
-        await fetch(`http://${address}:31070/configs/${serviceName}`)
-            .then(resp => resp.json())
-            .then(json => {
-                ConfigHelper.configs = json.data;
-                console.info("Configurations is loaded");
-            })
-            .catch(error => console.error(error));
-    }
 
     /**
      * Reading the service configurations
@@ -29,7 +15,14 @@ export default class ConfigHelper {
      */
     public static read(path: string): any {
         if (!ConfigHelper.configs) {
-            throw new Error("The configuration is not initialized");
+            let configHost = process.env.NODE_ENV === "development" ? "localhost" : "config-service";
+            let serviceName = process.env.SERVICE_NAME;
+            let configUrl = `http://${configHost}:31070/configs/${serviceName}`;
+            let resp = request("GET", configUrl);
+            if (resp.isError()) {
+                throw new Error("The configuration cannot loaded");
+            }
+            return JSON.parse(resp.getBody("utf-8"));
         }
 
         return path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper.configs);
