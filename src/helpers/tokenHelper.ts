@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import * as jwt from 'jsonwebtoken';
+import ConfigHelper from './configHelper';
 
 export type JwtBody = {
     userId: string
@@ -7,7 +8,7 @@ export type JwtBody = {
 
 export default class TokenHelper {
 
-    private static SECRET = process.env.JWT_SECRET_KEY || "";
+    private static SECRET = ConfigHelper.read("jwt-secret-key");
 
     /**
      * Verify jwt token to get
