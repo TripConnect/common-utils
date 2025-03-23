@@ -22,7 +22,7 @@ export default class ConfigHelper {
             if (resp.isError()) {
                 throw new Error("The configuration cannot loaded");
             }
-            return JSON.parse(resp.getBody("utf-8"));
+            ConfigHelper.configs = JSON.parse(resp.getBody("utf-8")).data;
         }
 
         let configValue = path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper.configs);
@@ -47,10 +47,10 @@ export default class ConfigHelper {
             if (resp.isError()) {
                 throw new Error("The configuration cannot loaded");
             }
-            return JSON.parse(resp.getBody("utf-8"));
+            ConfigHelper.configs = JSON.parse(resp.getBody("utf-8")).data;
         }
 
-        let configValue = path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper.configs);
+        let configValue = path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper.configs).data;
         return configValue ?? defaultValue;
     }
 }
