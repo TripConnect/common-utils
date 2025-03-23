@@ -6,6 +6,17 @@ export default class ConfigHelper {
 
     private static configs: Record<string, any>;
 
+    public static load(): any {
+        let configHost = process.env.NODE_ENV === "development" ? "localhost" : "config-service";
+        let serviceName = process.env.SERVICE_NAME || "unknown";
+        let configUrl = `http://${configHost}:31070/configs/${serviceName}`;
+        let resp = request("GET", configUrl);
+        if (resp.isError()) {
+            throw new Error("Cannot load the configurations for " + serviceName);
+        }
+        ConfigHelper.configs = JSON.parse(resp.getBody("utf-8")).data;
+    }
+
     /**
      * Reading the service configuration by key
      * @param path The path to sprcific configuration key
@@ -15,14 +26,7 @@ export default class ConfigHelper {
      */
     public static read(path: string): any {
         if (!ConfigHelper.configs) {
-            let configHost = process.env.NODE_ENV === "development" ? "localhost" : "config-service";
-            let serviceName = process.env.SERVICE_NAME;
-            let configUrl = `http://${configHost}:31070/configs/${serviceName}`;
-            let resp = request("GET", configUrl);
-            if (resp.isError()) {
-                throw new Error("The configuration cannot loaded");
-            }
-            ConfigHelper.configs = JSON.parse(resp.getBody("utf-8")).data;
+            throw new Error("ConfigHelper is not loaded already");
         }
 
         let configValue = path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper.configs);
@@ -40,14 +44,7 @@ export default class ConfigHelper {
      */
     public static readWithDefault(path: string, defaultValue: any): any {
         if (!ConfigHelper.configs) {
-            let configHost = process.env.NODE_ENV === "development" ? "localhost" : "config-service";
-            let serviceName = process.env.SERVICE_NAME;
-            let configUrl = `http://${configHost}:31070/configs/${serviceName}`;
-            let resp = request("GET", configUrl);
-            if (resp.isError()) {
-                throw new Error("The configuration cannot loaded");
-            }
-            ConfigHelper.configs = JSON.parse(resp.getBody("utf-8")).data;
+            throw new Error("ConfigHelper is not loaded already");
         }
 
         let configValue = path.split('.').reduce((obj, key) => obj?.[key], ConfigHelper.configs).data;
