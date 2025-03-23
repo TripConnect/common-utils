@@ -2,7 +2,7 @@ export type JwtBody = {
     userId: string;
 };
 export default class TokenHelper {
-    private static SECRET;
+    private static get SECRET();
     /**
      * Verify jwt token to get
      * @param token The jwt token
