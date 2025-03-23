@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package backend.discovery_service;
+
+service DiscoveryService {
+    rpc Discover(DiscoveryRequest) returns ServiceInstance {}
+}
+
+message DiscoveryRequest {
+    required string service_name = 1;
+}
+
+message ServiceInstance {
+    required string host = 1;
+    required int32 port = 2;
+}
