@@ -1,4 +1,5 @@
 // grpc utils
+import { backend as backendDefinition } from "../protos/defs";
 import { backendProto } from './grpc/definition';
 // kafka utils
 import KafkaListener, { TopicResolver } from './kafka/listener';
@@ -10,6 +11,7 @@ import ConfigHelper from './helpers/configHelper';
 
 export {
     backendProto,
+    backendDefinition,
     KafkaListener,
     KafkaProducer,
     TopicResolver,
