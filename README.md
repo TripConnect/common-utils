@@ -1,6 +1,19 @@
 # Introduction
 The system utils package  
 
+# Installation
+```sh
+npm install git+ssh://git@github.com:TripConnect/common-utils.git --force
+```
+
+# Release
+```sh
+npm run build # Build the package resources
+git push # Release to github as registry
+```
+
+# gRPC
+## Convention
 **Naming conventions**  
 - Find: return one item by id
 - Get: return multiple items by ids with pagination
@@ -9,14 +22,14 @@ The system utils package
 
 **Style guide**  
 Following the official [documentation](https://protobuf.dev/programming-guides/style/)
-
-# Release
+## Generate static definition
+Install related packages
 ```sh
-npm run build # Build the package resources
-git push # Release to github as registry
+npm install protobufjs --save
+npm install protobufjs-cli --save-dev
 ```
-
-# Installation
+Build js and ts definitions
 ```sh
-npm install git+ssh://git@github.com:TripConnect/common-utils.git --force
+npx pbjs -t static-module -w commonjs -o ./protos/defs/index.js ./protos/backend.proto
+npx pbts -o ./protos/defs/index.d.ts ./protos/defs/index.js
 ```

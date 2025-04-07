@@ -6,7 +6,8 @@
   "version": "1.0.0",
   "description": "The system library package",
   "scripts": {
-    "build": "tsc",
+    "build:grpc": "npx pbjs -t static-module -w commonjs -o protos/defs/index.js protos/backend.proto && npx pbts -o protos/defs/index.d.ts protos/defs/index.js",
+    "build": "npm run build:grpc && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,11 +16,13 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.10.2",
+    "protobufjs-cli": "^1.1.3",
     "typescript": "^5.7.2"
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.2",
     "kafkajs": "^2.2.4",
+    "protobufjs": "^7.4.0",
     "sync-request": "^6.1.0"
   },
   "exports": {
