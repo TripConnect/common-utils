@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "description": "The system library package",
   "scripts": {
-    "build:grpc": "npx pbjs -t static-module -w commonjs -o protos/defs/index.js protos/backend.proto && npx pbts -o protos/defs/index.d.ts protos/defs/index.js",
+    "build:grpc": "npx pbjs -t static-module -w commonjs -o ./src/grpc/staticDefinition.js ./protos/backend.proto && npx pbts -o ./src/grpc/staticDefinition.d.ts ./src/grpc/staticDefinition.js",
     "build": "npm run build:grpc && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -30,6 +30,6 @@ npm install protobufjs-cli --save-dev
 ```
 Build js and ts definitions
 ```sh
-npx pbjs -t static-module -w commonjs -o ./protos/defs/index.js ./protos/backend.proto
-npx pbts -o ./protos/defs/index.d.ts ./protos/defs/index.js
+npx pbjs -t static-module -w commonjs -o ./src/grpc/staticDefinition.js ./protos/backend.proto
+npx pbts -o ./src/grpc/staticDefinition.d.ts ./src/grpc/staticDefinition.js
 ```

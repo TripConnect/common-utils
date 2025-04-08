@@ -1,5 +1,5 @@
-import { backend as backendDefinition } from "../protos/defs";
-import { backendProto } from './grpc/definition';
+import { backendProto } from './grpc/dynamicDefinition';
+import { backend as backendDefinition } from "./grpc/staticDefinition";
 import KafkaListener, { TopicResolver } from './kafka/listener';
 import KafkaProducer, { PublishPayload } from './kafka/producer';
 import TokenHelper, { JwtBody } from './helpers/tokenHelper';
