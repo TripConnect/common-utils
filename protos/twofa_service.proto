@@ -9,31 +9,31 @@ service TwoFactorAuthenticationService {
 }
   
 message Generate2faRequest {
-    required string label = 1;
+    string label = 1;
 }
 
 message Generate2faResponse {
-    required string secret = 1;
-    required string qr_code = 2;
+    string secret = 1;
+    string qr_code = 2;
 }
 
 message Create2faRequest {
-    required string resource_id = 1;
-    required string label = 2;
-    required string secret = 3;
-    required string otp = 4;
+    string resource_id = 1;
+    string label = 2;
+    string secret = 3;
+    string otp = 4;
 }
 
 message Create2faResponse {
-    required string resource_id = 1;
+    string resource_id = 1;
 }
 
 message Validate2faRequest {
-    required string resource_id = 1;
-    required string otp = 2;
+    string resource_id = 1;
+    string otp = 2;
 }
 
 message Validate2faResponse {
-    required bool success = 1;
-    required string status = 2;
+    bool success = 1;
+    string status = 2;
 }

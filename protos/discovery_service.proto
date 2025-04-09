@@ -7,10 +7,10 @@ service DiscoveryService {
 }
 
 message DiscoveryRequest {
-    required string service_name = 1;
+    string service_name = 1;
 }
 
 message ServiceInstance {
-    required string host = 1;
-    required int32 port = 2;
+    string host = 1;
+    int32 port = 2;
 }

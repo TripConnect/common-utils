@@ -11,32 +11,32 @@ service UserService {
 }
 
 message Token {
-    required string access_token = 1;
-    required string refresh_token = 2;
+    string access_token = 1;
+    string refresh_token = 2;
 }
 
 message UserInfo {
-    required string id = 1;
-    required string avatar = 2;
-    required string display_name = 4;
-    required bool enabled_twofa = 5;
+    string id = 1;
+    string avatar = 2;
+    string display_name = 4;
+    bool enabled_twofa = 5;
 }
 
 message AuthenticatedInfo {
-    required UserInfo user_info = 1;
-    required Token token = 2;
+    UserInfo user_info = 1;
+    Token token = 2;
 }
 
 message SignInRequest {
-    required string username = 1;
-    required string password = 2;
+    string username = 1;
+    string password = 2;
 }
 
 message SignUpRequest {
-    required string username = 1;
-    required string password = 2;
-    required string display_name = 3;
-    required string avatar_url = 4;
+    string username = 1;
+    string password = 2;
+    string display_name = 3;
+    string avatar_url = 4;
 }
 
 message GetUsersRequest {
@@ -44,11 +44,11 @@ message GetUsersRequest {
 }
 
 message FindUserRequest {
-    required string user_id = 1;
+    string user_id = 1;
 }
 
 message SearchUserRequest {
-    required string term = 1;
+    string term = 1;
     optional int32 page_number = 2;
     optional int32 page_size = 3;
 }

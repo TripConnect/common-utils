@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-package backend;
-
-import "./discovery_service.proto";
-import "./user_service.proto";
-import "./twofa_service.proto";
-import "./chat_service.proto";
