@@ -30,6 +30,10 @@
     ".": {
       "import": "./lib/index.js",
       "require": "./lib/index.js"
+    },
+    "./protos/defs/*": {
+      "import": "./protos/defs/*.js",
+      "require": "./protos/defs/*.js"
     }
   }
 }
