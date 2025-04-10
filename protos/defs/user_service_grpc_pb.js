@@ -48,6 +48,17 @@ function deserialize_backend_user_service_SearchUserRequest(buffer_arg) {
   return user_service_pb.SearchUserRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_backend_user_service_SearchUserResponse(arg) {
+  if (!(arg instanceof user_service_pb.SearchUserResponse)) {
+    throw new Error('Expected argument of type backend.user_service.SearchUserResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_backend_user_service_SearchUserResponse(buffer_arg) {
+  return user_service_pb.SearchUserResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_backend_user_service_SignInRequest(arg) {
   if (!(arg instanceof user_service_pb.SignInRequest)) {
     throw new Error('Expected argument of type backend.user_service.SignInRequest');
@@ -143,11 +154,11 @@ var UserServiceService = exports.UserServiceService = {
     requestStream: false,
     responseStream: false,
     requestType: user_service_pb.SearchUserRequest,
-    responseType: user_service_pb.UsersInfo,
+    responseType: user_service_pb.SearchUserResponse,
     requestSerialize: serialize_backend_user_service_SearchUserRequest,
     requestDeserialize: deserialize_backend_user_service_SearchUserRequest,
-    responseSerialize: serialize_backend_user_service_UsersInfo,
-    responseDeserialize: deserialize_backend_user_service_UsersInfo,
+    responseSerialize: serialize_backend_user_service_SearchUserResponse,
+    responseDeserialize: deserialize_backend_user_service_SearchUserResponse,
   },
 };
 

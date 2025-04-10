@@ -7,7 +7,7 @@ service UserService {
     rpc SignUp (SignUpRequest) returns (AuthenticatedInfo) {}
     rpc FindUser (FindUserRequest) returns (UserInfo) {}
     rpc GetUsers (GetUsersRequest) returns (UsersInfo) {}
-    rpc SearchUser (SearchUserRequest) returns (UsersInfo) {}
+    rpc SearchUser (SearchUserRequest) returns (SearchUserResponse) {}
 }
 
 message Token {
@@ -51,6 +51,10 @@ message SearchUserRequest {
     string term = 1;
     optional int32 page_number = 2;
     optional int32 page_size = 3;
+}
+
+message SearchUserResponse {
+    repeated UserInfo users = 1;
 }
 
 message UsersInfo {

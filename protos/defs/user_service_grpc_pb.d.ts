@@ -51,14 +51,14 @@ interface IUserServiceService_IGetUsers extends grpc.MethodDefinition<user_servi
     responseSerialize: grpc.serialize<user_service_pb.UsersInfo>;
     responseDeserialize: grpc.deserialize<user_service_pb.UsersInfo>;
 }
-interface IUserServiceService_ISearchUser extends grpc.MethodDefinition<user_service_pb.SearchUserRequest, user_service_pb.UsersInfo> {
+interface IUserServiceService_ISearchUser extends grpc.MethodDefinition<user_service_pb.SearchUserRequest, user_service_pb.SearchUserResponse> {
     path: "/backend.user_service.UserService/SearchUser";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<user_service_pb.SearchUserRequest>;
     requestDeserialize: grpc.deserialize<user_service_pb.SearchUserRequest>;
-    responseSerialize: grpc.serialize<user_service_pb.UsersInfo>;
-    responseDeserialize: grpc.deserialize<user_service_pb.UsersInfo>;
+    responseSerialize: grpc.serialize<user_service_pb.SearchUserResponse>;
+    responseDeserialize: grpc.deserialize<user_service_pb.SearchUserResponse>;
 }
 
 export const UserServiceService: IUserServiceService;
@@ -68,7 +68,7 @@ export interface IUserServiceServer extends grpc.UntypedServiceImplementation {
     signUp: grpc.handleUnaryCall<user_service_pb.SignUpRequest, user_service_pb.AuthenticatedInfo>;
     findUser: grpc.handleUnaryCall<user_service_pb.FindUserRequest, user_service_pb.UserInfo>;
     getUsers: grpc.handleUnaryCall<user_service_pb.GetUsersRequest, user_service_pb.UsersInfo>;
-    searchUser: grpc.handleUnaryCall<user_service_pb.SearchUserRequest, user_service_pb.UsersInfo>;
+    searchUser: grpc.handleUnaryCall<user_service_pb.SearchUserRequest, user_service_pb.SearchUserResponse>;
 }
 
 export interface IUserServiceClient {
@@ -84,9 +84,9 @@ export interface IUserServiceClient {
     getUsers(request: user_service_pb.GetUsersRequest, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
     getUsers(request: user_service_pb.GetUsersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
     getUsers(request: user_service_pb.GetUsersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
-    searchUser(request: user_service_pb.SearchUserRequest, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
-    searchUser(request: user_service_pb.SearchUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
-    searchUser(request: user_service_pb.SearchUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
+    searchUser(request: user_service_pb.SearchUserRequest, callback: (error: grpc.ServiceError | null, response: user_service_pb.SearchUserResponse) => void): grpc.ClientUnaryCall;
+    searchUser(request: user_service_pb.SearchUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_service_pb.SearchUserResponse) => void): grpc.ClientUnaryCall;
+    searchUser(request: user_service_pb.SearchUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_service_pb.SearchUserResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class UserServiceClient extends grpc.Client implements IUserServiceClient {
@@ -103,7 +103,7 @@ export class UserServiceClient extends grpc.Client implements IUserServiceClient
     public getUsers(request: user_service_pb.GetUsersRequest, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
     public getUsers(request: user_service_pb.GetUsersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
     public getUsers(request: user_service_pb.GetUsersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
-    public searchUser(request: user_service_pb.SearchUserRequest, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
-    public searchUser(request: user_service_pb.SearchUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
-    public searchUser(request: user_service_pb.SearchUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_service_pb.UsersInfo) => void): grpc.ClientUnaryCall;
+    public searchUser(request: user_service_pb.SearchUserRequest, callback: (error: grpc.ServiceError | null, response: user_service_pb.SearchUserResponse) => void): grpc.ClientUnaryCall;
+    public searchUser(request: user_service_pb.SearchUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_service_pb.SearchUserResponse) => void): grpc.ClientUnaryCall;
+    public searchUser(request: user_service_pb.SearchUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_service_pb.SearchUserResponse) => void): grpc.ClientUnaryCall;
 }
