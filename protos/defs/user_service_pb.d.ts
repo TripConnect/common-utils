@@ -213,28 +213,6 @@ export namespace SearchUserRequest {
     }
 }
 
-export class SearchUserResponse extends jspb.Message { 
-    clearUsersList(): void;
-    getUsersList(): Array<UserInfo>;
-    setUsersList(value: Array<UserInfo>): SearchUserResponse;
-    addUsers(value?: UserInfo, index?: number): UserInfo;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SearchUserResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: SearchUserResponse): SearchUserResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SearchUserResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SearchUserResponse;
-    static deserializeBinaryFromReader(message: SearchUserResponse, reader: jspb.BinaryReader): SearchUserResponse;
-}
-
-export namespace SearchUserResponse {
-    export type AsObject = {
-        usersList: Array<UserInfo.AsObject>,
-    }
-}
-
 export class UsersInfo extends jspb.Message { 
     clearUsersList(): void;
     getUsersList(): Array<UserInfo>;
