@@ -22,11 +22,7 @@ Window
 npm install --save-dev grpc-tools@1.11.2 @grpc/grpc-js@1.6.6 grpc_tools_node_protoc_ts # Install related packages
 npx grpc_tools_node_protoc --proto_path=./protos --js_out=import_style=commonjs,binary:./protos/defs --grpc_out=grpc_js:./protos/defs --plugin=protoc-gen-ts="%cd%/node_modules/.bin/protoc-gen-ts.cmd" --ts_out=grpc_js:./protos/defs ./protos/*_service.proto # Build js and ts definitions
 ```
-## 3. Expose all gRPC definitions
-```sh
-npx ts-node tools/generate-grpc-index.ts
-```
-## 4. Release to github as registry
+## 3. Release to github as registry
 ```sh
 git push
 ```
