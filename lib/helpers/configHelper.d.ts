@@ -2,6 +2,11 @@ import "dotenv/config";
 export default class ConfigHelper {
     private static _CONFIGS;
     /**
+     * Read all configurations
+     * @returns All of configurations
+     */
+    static readAll(): Record<string, any>;
+    /**
      * Reading the service configuration by key
      * @param path The path to sprcific configuration key
      * @returns The configuration value

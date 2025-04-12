@@ -18,6 +18,14 @@ export default class ConfigHelper {
     }
 
     /**
+     * Read all configurations
+     * @returns All of configurations
+     */
+    public static readAll(): Record<string, any> {
+        return ConfigHelper._CONFIGS;
+    }
+
+    /**
      * Reading the service configuration by key
      * @param path The path to sprcific configuration key
      * @returns The configuration value
