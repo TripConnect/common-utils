@@ -14,8 +14,8 @@ export class ChatMessage extends jspb.Message {
     setConversationId(value: string): ChatMessage;
     getFromUserId(): string;
     setFromUserId(value: string): ChatMessage;
-    getMessageContent(): string;
-    setMessageContent(value: string): ChatMessage;
+    getContent(): string;
+    setContent(value: string): ChatMessage;
 
     hasCreatedAt(): boolean;
     clearCreatedAt(): void;
@@ -37,7 +37,7 @@ export namespace ChatMessage {
         id: string,
         conversationId: string,
         fromUserId: string,
-        messageContent: string,
+        content: string,
         createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 }
@@ -110,8 +110,8 @@ export class CreateChatMessageRequest extends jspb.Message {
     setConversationId(value: string): CreateChatMessageRequest;
     getFromUserId(): string;
     setFromUserId(value: string): CreateChatMessageRequest;
-    getMessageContent(): string;
-    setMessageContent(value: string): CreateChatMessageRequest;
+    getContent(): string;
+    setContent(value: string): CreateChatMessageRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): CreateChatMessageRequest.AsObject;
@@ -127,7 +127,55 @@ export namespace CreateChatMessageRequest {
     export type AsObject = {
         conversationId: string,
         fromUserId: string,
-        messageContent: string,
+        content: string,
+    }
+}
+
+export class GetChatMessageRequest extends jspb.Message { 
+    getConversationId(): string;
+    setConversationId(value: string): GetChatMessageRequest;
+    getPageNumber(): number;
+    setPageNumber(value: number): GetChatMessageRequest;
+    getPageSize(): number;
+    setPageSize(value: number): GetChatMessageRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetChatMessageRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetChatMessageRequest): GetChatMessageRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetChatMessageRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetChatMessageRequest;
+    static deserializeBinaryFromReader(message: GetChatMessageRequest, reader: jspb.BinaryReader): GetChatMessageRequest;
+}
+
+export namespace GetChatMessageRequest {
+    export type AsObject = {
+        conversationId: string,
+        pageNumber: number,
+        pageSize: number,
+    }
+}
+
+export class ChatMessages extends jspb.Message { 
+    clearMessagesList(): void;
+    getMessagesList(): Array<ChatMessage>;
+    setMessagesList(value: Array<ChatMessage>): ChatMessages;
+    addMessages(value?: ChatMessage, index?: number): ChatMessage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ChatMessages.AsObject;
+    static toObject(includeInstance: boolean, msg: ChatMessages): ChatMessages.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ChatMessages, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ChatMessages;
+    static deserializeBinaryFromReader(message: ChatMessages, reader: jspb.BinaryReader): ChatMessages;
+}
+
+export namespace ChatMessages {
+    export type AsObject = {
+        messagesList: Array<ChatMessage.AsObject>,
     }
 }
 
@@ -142,10 +190,6 @@ export class Conversation extends jspb.Message {
     getMemberIdsList(): Array<string>;
     setMemberIdsList(value: Array<string>): Conversation;
     addMemberIds(value: string, index?: number): string;
-    clearMessagesList(): void;
-    getMessagesList(): Array<ChatMessage>;
-    setMessagesList(value: Array<ChatMessage>): Conversation;
-    addMessages(value?: ChatMessage, index?: number): ChatMessage;
 
     hasCreatedAt(): boolean;
     clearCreatedAt(): void;
@@ -168,7 +212,6 @@ export namespace Conversation {
         type: ConversationType,
         name: string,
         memberIdsList: Array<string>,
-        messagesList: Array<ChatMessage.AsObject>,
         createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 }
@@ -179,27 +222,15 @@ export class SearchConversationsRequest extends jspb.Message {
     clearType(): void;
     getType(): ConversationType | undefined;
     setType(value: ConversationType): SearchConversationsRequest;
-    clearMemberIdsList(): void;
-    getMemberIdsList(): Array<string>;
-    setMemberIdsList(value: Array<string>): SearchConversationsRequest;
-    addMemberIds(value: string, index?: number): string;
 
     hasTerm(): boolean;
     clearTerm(): void;
     getTerm(): string | undefined;
     setTerm(value: string): SearchConversationsRequest;
-
-    hasPageNumber(): boolean;
-    clearPageNumber(): void;
-    getPageNumber(): number | undefined;
+    getPageNumber(): number;
     setPageNumber(value: number): SearchConversationsRequest;
-
-    hasPageSize(): boolean;
-    clearPageSize(): void;
-    getPageSize(): number | undefined;
+    getPageSize(): number;
     setPageSize(value: number): SearchConversationsRequest;
-    getMessagePageSize(): number;
-    setMessagePageSize(value: number): SearchConversationsRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): SearchConversationsRequest.AsObject;
@@ -214,31 +245,29 @@ export class SearchConversationsRequest extends jspb.Message {
 export namespace SearchConversationsRequest {
     export type AsObject = {
         type?: ConversationType,
-        memberIdsList: Array<string>,
         term?: string,
-        pageNumber?: number,
-        pageSize?: number,
-        messagePageSize: number,
+        pageNumber: number,
+        pageSize: number,
     }
 }
 
-export class SearchConversationsPaginationResponse extends jspb.Message { 
+export class Conversations extends jspb.Message { 
     clearConversationsList(): void;
     getConversationsList(): Array<Conversation>;
-    setConversationsList(value: Array<Conversation>): SearchConversationsPaginationResponse;
+    setConversationsList(value: Array<Conversation>): Conversations;
     addConversations(value?: Conversation, index?: number): Conversation;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SearchConversationsPaginationResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: SearchConversationsPaginationResponse): SearchConversationsPaginationResponse.AsObject;
+    toObject(includeInstance?: boolean): Conversations.AsObject;
+    static toObject(includeInstance: boolean, msg: Conversations): Conversations.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SearchConversationsPaginationResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SearchConversationsPaginationResponse;
-    static deserializeBinaryFromReader(message: SearchConversationsPaginationResponse, reader: jspb.BinaryReader): SearchConversationsPaginationResponse;
+    static serializeBinaryToWriter(message: Conversations, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Conversations;
+    static deserializeBinaryFromReader(message: Conversations, reader: jspb.BinaryReader): Conversations;
 }
 
-export namespace SearchConversationsPaginationResponse {
+export namespace Conversations {
     export type AsObject = {
         conversationsList: Array<Conversation.AsObject>,
     }

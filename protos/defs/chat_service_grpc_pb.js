@@ -16,6 +16,17 @@ function deserialize_backend_chat_service_ChatMessage(buffer_arg) {
   return chat_service_pb.ChatMessage.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_backend_chat_service_ChatMessages(arg) {
+  if (!(arg instanceof chat_service_pb.ChatMessages)) {
+    throw new Error('Expected argument of type backend.chat_service.ChatMessages');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_backend_chat_service_ChatMessages(buffer_arg) {
+  return chat_service_pb.ChatMessages.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_backend_chat_service_Conversation(arg) {
   if (!(arg instanceof chat_service_pb.Conversation)) {
     throw new Error('Expected argument of type backend.chat_service.Conversation');
@@ -25,6 +36,17 @@ function serialize_backend_chat_service_Conversation(arg) {
 
 function deserialize_backend_chat_service_Conversation(buffer_arg) {
   return chat_service_pb.Conversation.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_backend_chat_service_Conversations(arg) {
+  if (!(arg instanceof chat_service_pb.Conversations)) {
+    throw new Error('Expected argument of type backend.chat_service.Conversations');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_backend_chat_service_Conversations(buffer_arg) {
+  return chat_service_pb.Conversations.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_backend_chat_service_CreateChatMessageRequest(arg) {
@@ -60,15 +82,15 @@ function deserialize_backend_chat_service_FindConversationRequest(buffer_arg) {
   return chat_service_pb.FindConversationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_backend_chat_service_SearchConversationsPaginationResponse(arg) {
-  if (!(arg instanceof chat_service_pb.SearchConversationsPaginationResponse)) {
-    throw new Error('Expected argument of type backend.chat_service.SearchConversationsPaginationResponse');
+function serialize_backend_chat_service_GetChatMessageRequest(arg) {
+  if (!(arg instanceof chat_service_pb.GetChatMessageRequest)) {
+    throw new Error('Expected argument of type backend.chat_service.GetChatMessageRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_backend_chat_service_SearchConversationsPaginationResponse(buffer_arg) {
-  return chat_service_pb.SearchConversationsPaginationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_backend_chat_service_GetChatMessageRequest(buffer_arg) {
+  return chat_service_pb.GetChatMessageRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_backend_chat_service_SearchConversationsRequest(arg) {
@@ -95,6 +117,28 @@ var ChatServiceService = exports.ChatServiceService = {
     responseSerialize: serialize_backend_chat_service_Conversation,
     responseDeserialize: deserialize_backend_chat_service_Conversation,
   },
+  findConversation: {
+    path: '/backend.chat_service.ChatService/FindConversation',
+    requestStream: false,
+    responseStream: false,
+    requestType: chat_service_pb.FindConversationRequest,
+    responseType: chat_service_pb.Conversation,
+    requestSerialize: serialize_backend_chat_service_FindConversationRequest,
+    requestDeserialize: deserialize_backend_chat_service_FindConversationRequest,
+    responseSerialize: serialize_backend_chat_service_Conversation,
+    responseDeserialize: deserialize_backend_chat_service_Conversation,
+  },
+  searchConversations: {
+    path: '/backend.chat_service.ChatService/SearchConversations',
+    requestStream: false,
+    responseStream: false,
+    requestType: chat_service_pb.SearchConversationsRequest,
+    responseType: chat_service_pb.Conversations,
+    requestSerialize: serialize_backend_chat_service_SearchConversationsRequest,
+    requestDeserialize: deserialize_backend_chat_service_SearchConversationsRequest,
+    responseSerialize: serialize_backend_chat_service_Conversations,
+    responseDeserialize: deserialize_backend_chat_service_Conversations,
+  },
   createChatMessage: {
     path: '/backend.chat_service.ChatService/CreateChatMessage',
     requestStream: false,
@@ -106,27 +150,16 @@ var ChatServiceService = exports.ChatServiceService = {
     responseSerialize: serialize_backend_chat_service_ChatMessage,
     responseDeserialize: deserialize_backend_chat_service_ChatMessage,
   },
-  searchConversations: {
-    path: '/backend.chat_service.ChatService/SearchConversations',
+  getChatMessages: {
+    path: '/backend.chat_service.ChatService/GetChatMessages',
     requestStream: false,
     responseStream: false,
-    requestType: chat_service_pb.SearchConversationsRequest,
-    responseType: chat_service_pb.SearchConversationsPaginationResponse,
-    requestSerialize: serialize_backend_chat_service_SearchConversationsRequest,
-    requestDeserialize: deserialize_backend_chat_service_SearchConversationsRequest,
-    responseSerialize: serialize_backend_chat_service_SearchConversationsPaginationResponse,
-    responseDeserialize: deserialize_backend_chat_service_SearchConversationsPaginationResponse,
-  },
-  findConversation: {
-    path: '/backend.chat_service.ChatService/FindConversation',
-    requestStream: false,
-    responseStream: false,
-    requestType: chat_service_pb.FindConversationRequest,
-    responseType: chat_service_pb.Conversation,
-    requestSerialize: serialize_backend_chat_service_FindConversationRequest,
-    requestDeserialize: deserialize_backend_chat_service_FindConversationRequest,
-    responseSerialize: serialize_backend_chat_service_Conversation,
-    responseDeserialize: deserialize_backend_chat_service_Conversation,
+    requestType: chat_service_pb.GetChatMessageRequest,
+    responseType: chat_service_pb.ChatMessages,
+    requestSerialize: serialize_backend_chat_service_GetChatMessageRequest,
+    requestDeserialize: deserialize_backend_chat_service_GetChatMessageRequest,
+    responseSerialize: serialize_backend_chat_service_ChatMessages,
+    responseDeserialize: deserialize_backend_chat_service_ChatMessages,
   },
 };
 
