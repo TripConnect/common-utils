@@ -11,7 +11,7 @@ export default class ConfigHelper {
         let serviceName = process.env.SERVICE_NAME || "unknown";
         let configUrl = `http://${configHost}:31070/configs/${serviceName}`;
         let resp = request("GET", configUrl);
-        if (resp.isError()) {
+        if (resp.statusCode < 200 || resp.statusCode >= 300) {
             throw new Error("Cannot load the configurations for " + serviceName);
         }
         ConfigHelper._CONFIGS = JSON.parse(resp.getBody("utf-8")).data;
