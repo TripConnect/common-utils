@@ -131,25 +131,25 @@ export namespace CreateChatMessageRequest {
     }
 }
 
-export class GetChatMessageRequest extends jspb.Message { 
+export class GetChatMessagesRequest extends jspb.Message { 
     getConversationId(): string;
-    setConversationId(value: string): GetChatMessageRequest;
+    setConversationId(value: string): GetChatMessagesRequest;
     getPageNumber(): number;
-    setPageNumber(value: number): GetChatMessageRequest;
+    setPageNumber(value: number): GetChatMessagesRequest;
     getPageSize(): number;
-    setPageSize(value: number): GetChatMessageRequest;
+    setPageSize(value: number): GetChatMessagesRequest;
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): GetChatMessageRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: GetChatMessageRequest): GetChatMessageRequest.AsObject;
+    toObject(includeInstance?: boolean): GetChatMessagesRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetChatMessagesRequest): GetChatMessagesRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: GetChatMessageRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): GetChatMessageRequest;
-    static deserializeBinaryFromReader(message: GetChatMessageRequest, reader: jspb.BinaryReader): GetChatMessageRequest;
+    static serializeBinaryToWriter(message: GetChatMessagesRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetChatMessagesRequest;
+    static deserializeBinaryFromReader(message: GetChatMessagesRequest, reader: jspb.BinaryReader): GetChatMessagesRequest;
 }
 
-export namespace GetChatMessageRequest {
+export namespace GetChatMessagesRequest {
     export type AsObject = {
         conversationId: string,
         pageNumber: number,

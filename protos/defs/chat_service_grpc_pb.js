@@ -82,15 +82,15 @@ function deserialize_backend_chat_service_FindConversationRequest(buffer_arg) {
   return chat_service_pb.FindConversationRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_backend_chat_service_GetChatMessageRequest(arg) {
-  if (!(arg instanceof chat_service_pb.GetChatMessageRequest)) {
-    throw new Error('Expected argument of type backend.chat_service.GetChatMessageRequest');
+function serialize_backend_chat_service_GetChatMessagesRequest(arg) {
+  if (!(arg instanceof chat_service_pb.GetChatMessagesRequest)) {
+    throw new Error('Expected argument of type backend.chat_service.GetChatMessagesRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_backend_chat_service_GetChatMessageRequest(buffer_arg) {
-  return chat_service_pb.GetChatMessageRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_backend_chat_service_GetChatMessagesRequest(buffer_arg) {
+  return chat_service_pb.GetChatMessagesRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_backend_chat_service_SearchConversationsRequest(arg) {
@@ -154,10 +154,10 @@ var ChatServiceService = exports.ChatServiceService = {
     path: '/backend.chat_service.ChatService/GetChatMessages',
     requestStream: false,
     responseStream: false,
-    requestType: chat_service_pb.GetChatMessageRequest,
+    requestType: chat_service_pb.GetChatMessagesRequest,
     responseType: chat_service_pb.ChatMessages,
-    requestSerialize: serialize_backend_chat_service_GetChatMessageRequest,
-    requestDeserialize: deserialize_backend_chat_service_GetChatMessageRequest,
+    requestSerialize: serialize_backend_chat_service_GetChatMessagesRequest,
+    requestDeserialize: deserialize_backend_chat_service_GetChatMessagesRequest,
     responseSerialize: serialize_backend_chat_service_ChatMessages,
     responseDeserialize: deserialize_backend_chat_service_ChatMessages,
   },

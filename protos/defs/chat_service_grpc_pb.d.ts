@@ -52,12 +52,12 @@ interface IChatServiceService_ICreateChatMessage extends grpc.MethodDefinition<c
     responseSerialize: grpc.serialize<chat_service_pb.ChatMessage>;
     responseDeserialize: grpc.deserialize<chat_service_pb.ChatMessage>;
 }
-interface IChatServiceService_IGetChatMessages extends grpc.MethodDefinition<chat_service_pb.GetChatMessageRequest, chat_service_pb.ChatMessages> {
+interface IChatServiceService_IGetChatMessages extends grpc.MethodDefinition<chat_service_pb.GetChatMessagesRequest, chat_service_pb.ChatMessages> {
     path: "/backend.chat_service.ChatService/GetChatMessages";
     requestStream: false;
     responseStream: false;
-    requestSerialize: grpc.serialize<chat_service_pb.GetChatMessageRequest>;
-    requestDeserialize: grpc.deserialize<chat_service_pb.GetChatMessageRequest>;
+    requestSerialize: grpc.serialize<chat_service_pb.GetChatMessagesRequest>;
+    requestDeserialize: grpc.deserialize<chat_service_pb.GetChatMessagesRequest>;
     responseSerialize: grpc.serialize<chat_service_pb.ChatMessages>;
     responseDeserialize: grpc.deserialize<chat_service_pb.ChatMessages>;
 }
@@ -69,7 +69,7 @@ export interface IChatServiceServer extends grpc.UntypedServiceImplementation {
     findConversation: grpc.handleUnaryCall<chat_service_pb.FindConversationRequest, chat_service_pb.Conversation>;
     searchConversations: grpc.handleUnaryCall<chat_service_pb.SearchConversationsRequest, chat_service_pb.Conversations>;
     createChatMessage: grpc.handleUnaryCall<chat_service_pb.CreateChatMessageRequest, chat_service_pb.ChatMessage>;
-    getChatMessages: grpc.handleUnaryCall<chat_service_pb.GetChatMessageRequest, chat_service_pb.ChatMessages>;
+    getChatMessages: grpc.handleUnaryCall<chat_service_pb.GetChatMessagesRequest, chat_service_pb.ChatMessages>;
 }
 
 export interface IChatServiceClient {
@@ -85,9 +85,9 @@ export interface IChatServiceClient {
     createChatMessage(request: chat_service_pb.CreateChatMessageRequest, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessage) => void): grpc.ClientUnaryCall;
     createChatMessage(request: chat_service_pb.CreateChatMessageRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessage) => void): grpc.ClientUnaryCall;
     createChatMessage(request: chat_service_pb.CreateChatMessageRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessage) => void): grpc.ClientUnaryCall;
-    getChatMessages(request: chat_service_pb.GetChatMessageRequest, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
-    getChatMessages(request: chat_service_pb.GetChatMessageRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
-    getChatMessages(request: chat_service_pb.GetChatMessageRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
+    getChatMessages(request: chat_service_pb.GetChatMessagesRequest, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
+    getChatMessages(request: chat_service_pb.GetChatMessagesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
+    getChatMessages(request: chat_service_pb.GetChatMessagesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
 }
 
 export class ChatServiceClient extends grpc.Client implements IChatServiceClient {
@@ -104,7 +104,7 @@ export class ChatServiceClient extends grpc.Client implements IChatServiceClient
     public createChatMessage(request: chat_service_pb.CreateChatMessageRequest, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessage) => void): grpc.ClientUnaryCall;
     public createChatMessage(request: chat_service_pb.CreateChatMessageRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessage) => void): grpc.ClientUnaryCall;
     public createChatMessage(request: chat_service_pb.CreateChatMessageRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessage) => void): grpc.ClientUnaryCall;
-    public getChatMessages(request: chat_service_pb.GetChatMessageRequest, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
-    public getChatMessages(request: chat_service_pb.GetChatMessageRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
-    public getChatMessages(request: chat_service_pb.GetChatMessageRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
+    public getChatMessages(request: chat_service_pb.GetChatMessagesRequest, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
+    public getChatMessages(request: chat_service_pb.GetChatMessagesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
+    public getChatMessages(request: chat_service_pb.GetChatMessagesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: chat_service_pb.ChatMessages) => void): grpc.ClientUnaryCall;
 }
