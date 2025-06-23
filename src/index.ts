@@ -1,5 +1,3 @@
-// grpc utils
-import { backendProto } from './grpc/definition';
 // kafka utils
 import KafkaListener, { TopicResolver } from './kafka/listener';
 import KafkaProducer, { PublishPayload } from './kafka/producer';
@@ -9,7 +7,6 @@ import TokenHelper, { JwtBody } from './helpers/tokenHelper';
 import ConfigHelper from './helpers/configHelper';
 
 export {
-    backendProto,
     KafkaListener,
     KafkaProducer,
     TopicResolver,
