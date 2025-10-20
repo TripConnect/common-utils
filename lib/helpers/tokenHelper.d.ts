@@ -11,7 +11,7 @@ export default class TokenHelper {
     static verify(token: string): JwtBody | null;
     /**
      * Sign jwt token
-     * @param token The jwt token
+     * @param user The jwt token body
      * @returns The jwt token
      */
     static sign(user: JwtBody): string;
